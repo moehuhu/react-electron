@@ -10,6 +10,10 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    frame: true,   //要创建无边框窗口
+    type:'window', 
+    resizable: false, //禁止窗口大小缩放
+    transparent: true,  //设置透明
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
@@ -19,10 +23,9 @@ const createWindow = () => {
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
-  mainWindow.webContents.openDevTools();
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 }
 
 // This method will be called when Electron has finished
